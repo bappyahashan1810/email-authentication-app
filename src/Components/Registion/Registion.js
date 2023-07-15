@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, updateProfile } from 'firebase/auth';
 import app from '../../firebase/firebase.init';
+import { Link } from 'react-router-dom';
 
 const auth = getAuth(app);
 
@@ -29,6 +30,7 @@ const Registion = () => {
                 console.log(user);
                 emailverfication();
                 setSuccess(true);
+                updateUserProfile(name);
                 form.reset();
             })
             .catch(error => {
@@ -78,6 +80,8 @@ const Registion = () => {
                     Registration
                 </Button>
             </Form>
+            <p><small>Have an account?please<Link to='/login'>LogIn</Link></small></p>
+
         </div>
     );
 };
